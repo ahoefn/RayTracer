@@ -21,6 +21,8 @@ public partial class MainWindow : Window
         height = 200;
         width_box.Text = width.ToString();
         height_box.Text = height.ToString();
+
+        RayTracer.Tests.InterfaceTests.RenderColorSquare(Rendered_Image, width, height);
     }
     public uint width;
     public uint height;

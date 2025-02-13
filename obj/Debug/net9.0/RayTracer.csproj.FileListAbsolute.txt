@@ -5,6 +5,7 @@ C:\Users\hoefn\Code Projects\RayTracer\obj\Debug\net9.0\RayTracer.GeneratedMSBui
 C:\Users\hoefn\Code Projects\RayTracer\obj\Debug\net9.0\RayTracer.AssemblyInfoInputs.cache
 C:\Users\hoefn\Code Projects\RayTracer\obj\Debug\net9.0\RayTracer.AssemblyInfo.cs
 C:\Users\hoefn\Code Projects\RayTracer\obj\Debug\net9.0\RayTracer.csproj.CoreCompileInputs.cache
+C:\Users\hoefn\Code Projects\RayTracer\obj\Debug\net9.0\RayTracer.sourcelink.json
 C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\RayTracer.exe
 C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\RayTracer.deps.json
 C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\RayTracer.runtimeconfig.json
