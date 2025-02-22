@@ -65,3 +65,15 @@ C:\Users\hoefn\Code Projects\RayTracer\obj\Debug\net9.0\refint\Avalonia\RayTrace
 C:\Users\hoefn\Code Projects\RayTracer\obj\Debug\net9.0\RayTracer.csproj.Up2Date
 C:\Users\hoefn\Code Projects\RayTracer\obj\Debug\net9.0\RayTracer.genruntimeconfig.cache
 C:\Users\hoefn\Code Projects\RayTracer\obj\Debug\net9.0\ref\RayTracer.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Configuration.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Logging.Console.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\hoefn\Code Projects\RayTracer\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll

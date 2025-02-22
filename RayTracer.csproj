@@ -10,9 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <Compile Update="**\*.xaml.cs">
+    <!-- General packages: -->
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.2" />
+      
+    <Compile Update="**\*.xaml.cs">
         <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <!-- Avalonia packages: -->
     <PackageReference Include="Avalonia" Version="11.2.1" />
     <PackageReference Include="Avalonia.Desktop" Version="11.2.1" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1" />

@@ -18,6 +18,33 @@ struct Color //u32 with blocks of 8 bytes corresponding to r, g, b and a respect
     public uint b { get { return (rgba << 8) >> 3 * 8; } set { rgba = (rgba << 2 * 8) >> 2 * 8 | (rgba >> 3 * 8) << 3 * 8 | (value << 3 * 8) >> 8; } }
     public uint g { get { return (rgba << 8 * 2) >> 3 * 8; } set { rgba = (rgba << 3 * 8) >> 3 * 8 | (rgba >> 2 * 8) << 2 * 8 | (value << 3 * 8) >> 2 * 8; } }
     public uint r { get { return (rgba << 8 * 3) >> 3 * 8; } set { rgba = (rgba >> 8) << 8 | (value << 3 * 8) >> 3 * 8; } }
+
+    public static uint ToColor(float f)
+    {//Makes sure that colors do not overflow
+        if (f > 255) return 255;
+        if (f < 0) return 0;
+        return (uint)f;
+    }
+    public static Color operator *(float factor, Color color)
+    {
+        return new Color(ToColor(color.r * factor), ToColor(color.g * factor), ToColor(color.b * factor), ToColor(color.a * factor));
+    }
+    public static Color operator *(Color color, float factor)
+    {
+        return new Color(ToColor(color.r * factor), ToColor(color.g * factor), ToColor(color.b * factor), ToColor(color.a * factor));
+    }
+    public static Color operator *(Color color1, Color color2)
+    {
+        return new Color(ToColor(color1.r * color2.r / 255), ToColor(color1.g * color2.g / 255), ToColor(color1.b * color2.b / 255), ToColor(color1.a * color2.a / 255));
+    }
+    public static Color operator +(Color color1, Color color2)
+    {
+        return new Color(ToColor(color1.r + color2.r), ToColor(color1.g + color2.g), ToColor(color1.b + color2.b), ToColor(color1.a + color2.a));
+    }
+    public static Color MultiplyNotAlpha(float factor, Color color)
+    {
+        return new Color(ToColor(color.r * factor), ToColor(color.g * factor), ToColor(color.b * factor), color.a);
+    }
 }
 struct Vec3
 {

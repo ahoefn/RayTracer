@@ -1,31 +1,26 @@
-using System.Drawing;
 using System;
-using static System.Math;
 namespace RayTracer.TracerCode;
-
 using Point = Vec3;
+using static Basis;
 
-
-class RayHolder : GeometricObject
+interface IRayHolder
 {
-    public RayHolder()
-    {
-        rayList = Array.Empty<Ray>();
-    }
-    public Ray[] rayList;
+    public Ray[] rayList { get; set; }
 
 }
 
-class ImageHolder : RayHolder
+class ImageHolder
 {
-    public ImageHolder(uint width_in, uint height_in) : base()
+    public ImageHolder(uint width_in, uint height_in, ILogger log_in) : base()
     {
         height = height_in;
         width = width_in;
+        log = log_in;
     }
     // Data:
     public uint height;
     public uint width;
+    public ILogger log;
     //Methods:
     public int pixelIndex(int x, int z)
     {//Returns the index i of the ray in rayList corresponding to the pixel at (ox,oy) in the plane coordinates.
@@ -33,21 +28,41 @@ class ImageHolder : RayHolder
     }
 
 }
-class Engine : ImageHolder
+class Engine : ImageHolder, IRayHolder
 {
-    public Engine(uint width_in, uint height_in, float? distance = (float).1) : base(width_in, height_in)
+    public Engine(uint width_in, uint height_in, ILogger log_in, float? distance = (float).1) : base(width_in, height_in, log_in)
     {
-        viewPort = new ViewPort(width, height);
+        //Geometric defs
+        viewPort = new ViewPort(width, height, log);
         rayList = viewPort.rayList;
-        sphere = new Sphere(new Point(0, 5, 0), 3);
+        var sphere1 = new Sphere(new Point(0, 10, 5), 4, new Material(new Color(255, 0, 0, 255)), log);
+        var sphere2 = new Sphere(new Point(0, 10, -5), 5, new Material(new Color(0, 100, 0, 255)), log);
+        shapelist = new ShapeList([sphere1, sphere2]);
+        light = new LightSource(new Vec3(1, 1, -1), log);
     }
     // Data:
     public ViewPort viewPort;
-    public Sphere sphere;
+    public ShapeList shapelist;
+    public LightSource light;
+    public Ray[] rayList { get; set; }
     //Methods:
-    public Color RayColor(Ray ray)
+    public Color[] Render()
     {
-        if (sphere.DoesHit(ray)) { return sphere.OnHit(ray); }
+        Color[] img = new Color[height * width];
+        for (int i = 0; i < width * height; i++)
+        {
+            img[i] = CastRay(rayList[i]);
+        }
+        // img = Blurs.Linear(img, width, height, (float)0.6);
+        return img;
+    }
+    public Color CastRay(Ray ray)
+    {
+        HitRecord record = shapelist.GetHit(ray);
+        if (record.t != float.PositiveInfinity)
+        {
+            return light.LambertianRefl(record.normal, record.material);
+        }
 
         if (ray.dir.z > 0)
         {
@@ -58,25 +73,15 @@ class Engine : ImageHolder
         }
         return new Color(0, 255, 0, 255);
     }
-
-    public Color[] Render()
-    {
-        Color[] img = new Color[height * width];
-        for (int i = 0; i < width * height; i++)
-        {
-            img[i] = RayColor(rayList[i]);
-        }
-        return img;
-    }
 }
 
 
 class ViewPort : ImageHolder
 {
-    public ViewPort(uint width_in, uint height_in, float distance_in = (float)1) : base(width_in, height_in)
+    public ViewPort(uint width_in, uint height_in, ILogger logger_in, float distance_in = (float)1) : base(width_in, height_in, logger_in)
     {
         distance = distance_in;
-        viewPlane = new Plane(distance * yVec, distance * yVec);
+        viewPlane = new Plane(distance * yVec, distance * yVec, new Material(), logger_in);
 
         //We have a preferred basis on the plane for this particular plane
         pointDistance = (float)0.01;
@@ -99,6 +104,7 @@ class ViewPort : ImageHolder
     public float pointDistance;
     public Point upLeftCorner;
     public Plane viewPlane;
+    public Ray[] rayList { get; set; }
 
     //Methods:
     public (uint, uint) GetPixel(Ray ray)
@@ -114,16 +120,3 @@ class ViewPort : ImageHolder
     }
 }
 
-class Utility
-{
-    public void Sizes()
-    {
-        unsafe
-        {
-            int raySize = sizeof(Ray);
-            int Vec3Size = sizeof(Vec3);
-            int ColorSize = sizeof(Color);
-
-        }
-    }
-}
