@@ -1,10 +1,31 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="RayTracer.App"
-             RequestedThemeVariant="Default">
+             RequestedThemeVariant="Dark">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+    <Application.Resources>
+        <!-- Define colors: -->
+        <Color x:Key="BackgroundColor">#36393B </Color>
+        <Color x:Key="PrimaryColor">#E45C2F</Color>
+        <Color x:Key="SecondaryColor">#45B69C</Color>
+        <Color x:Key="AccentColor">#90BE6D</Color>
+        <Color x:Key="TextColor">#F7F7FF</Color>
 
+        <!-- Define backgroundbrushes -->
+        <SolidColorBrush x:Key="BackgroundBrush" Color="{DynamicResource ResourceKey = BackgroundColor}"/>
+        <SolidColorBrush x:Key="PrimaryBrush" Color="{DynamicResource PrimaryColor}"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="{DynamicResource SecondaryColor}"/>
+        <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource AccentColor}"/>
+
+        <!-- Fonts and fontsizes -->
+        <FontFamily x:Key="InterFont">avares://RayTracer/Assets/Inter#FontName</FontFamily>
+        <x:Double x:Key="FontSizeDefault"> 12</x:Double>
+        <x:Double x:Key="FontSizeMedium"> 15.8</x:Double>
+        <x:Double x:Key="FontSizeLarge"> 20.3</x:Double>
+        <x:Double x:Key="FontSizeTitle"> 34.2</x:Double>
+    </Application.Resources>
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme/>
+        <StyleInclude Source="Styles/AppDefaultStyles.axaml"/>
     </Application.Styles>
 </Application>

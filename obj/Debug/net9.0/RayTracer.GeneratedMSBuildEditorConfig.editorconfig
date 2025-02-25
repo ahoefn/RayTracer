@@ -26,3 +26,6 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/hoefn/Code Projects/RayTracer/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/hoefn/Code Projects/RayTracer/Styles/AppDefaultStyles.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
