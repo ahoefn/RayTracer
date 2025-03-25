@@ -1,0 +1,1 @@
+TODO: implement custom controls following https://github.com/AvaloniaUI/Avalonia.Samples/tree/main/src/Avalonia.Samples/CustomControls/RatingControlSample
