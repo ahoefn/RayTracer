@@ -1,5 +1,4 @@
 using RayTracer.TracerCode;
-using Avalonia.Media.Imaging;
 using Avalonia.Controls;
 namespace RayTracer.Tests;
 
